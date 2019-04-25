@@ -15,12 +15,7 @@ public class SearchES {
         Statement st = con.createStatement();
         ResultSet resultSet= st.executeQuery("select * from security-auditlog-2019.04.25");
         BeanListHandler<Audit> bh  =new BeanListHandler<Audit>(Audit.class);
-        bh.handle(resultSet).forEach(new Consumer<Audit>() {
-            @Override
-            public void accept(Audit audit) {
-                System.out.println(audit.toString());
-            }
-        });
+        bh.handle(resultSet).forEach(audit -> System.out.println(audit.toString()));
         con.close();
     }
 }
